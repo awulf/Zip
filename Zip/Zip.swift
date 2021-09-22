@@ -371,7 +371,9 @@ public class Zip {
                 progressTracker.completedUnitCount = Int64(currentPosition)
                 
                 zipCloseFileInZip(zip)
-                free(buffer)
+                if let buffer = buffer {
+                    free(buffer)
+                }
                 fclose(input)
             }
         }
